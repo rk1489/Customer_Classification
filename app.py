@@ -9,17 +9,17 @@ tree_model=pickle.load(open('tree_model.pkl','rb'))
 rf_model=pickle.load(open('rf_model.pkl','rb'))
 
 def classify(num):
-    if num == 0:
+    if num < 0.5:
         return 'Class 1'
-    elif num == 1:
+    elif num < 1.5:
         return 'Class 2'
-    elif num == 2:
+    elif num < 2.5:
         return 'Class 3'
-    elif num == 3:
+    elif num < 3.5:
         return 'Class 4'
-    elif num == 4:
+    elif num < 4.5:
         return 'Class 5'
-    elif num == 5:
+    elif num < 5.5:
         return 'Class 6'
     else:
         return 'Unidentified Class'

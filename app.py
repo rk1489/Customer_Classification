@@ -3,26 +3,26 @@ import pickle
 
 
 
-knn_model=pickle.load(open('knn_model.pkl','rb'))
-svm_model=pickle.load(open('svm_model.pkl','rb'))
-tree_model=pickle.load(open('tree_model.pkl','rb'))
-rf_model=pickle.load(open('rf_model.pkl','rb'))
+knn=pickle.load(open('knn.pkl','rb'))
+tree=pickle.load(open('tree.pkl','rb'))
+rf=pickle.load(open('rf.pkl','rb'))
 
-def classify(num):
-    if num == 0:
-        return 'Class 1'
-    elif num == 1:
-        return 'Class 2'
-    elif num == 2:
-        return 'Class 3'
-    elif num == 3:
-        return 'Class 4'
-    elif num == 4:
-        return 'Class 5'
-    elif num == 5:
-        return 'Class 6'
+def classify(n):
+    if n == 'Class 1':
+        return 'Class 1 (Young middle responsible behaviour)'
+    elif n == 'Class 2':
+        return 'Class 2 (Old middle responsible behaviour)'
+    elif n == 'Class 3':
+        return 'Class 3 (Aged rich miser behaviour)'
+    elif n == 'Class 4':
+        return 'Class 4 (Young rich spendthrift behaviour)'
+    elif n == 'Class 5':
+        return 'Class 5 (Young poor spendthrift behaviour)'
+    elif n == 'Class 6':
+        return 'Class 6 (Aged poor responsible behaviour)'
     else:
-        return 'Unidentified Class'
+        return 'Unidentified Customer Class'
+    
 def main():
     st.title("Customer Classifier ML App")
     html_temp = """
@@ -31,9 +31,10 @@ def main():
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
-    activities=['K - Nearest Neighbour (Accuracy = 97.5%)','Support Vector Classifier (Accuracy = 38.8%)','Decision Tree (Accuracy = 95.0%)', 'Random Forest (Accuracy = 96.3%)']
+    activities=['K - Nearest Neighbour (Accuracy = 97.5%)','Decision Tree (Accuracy = 95.0%)', 'Random Forest (Accuracy = 96.3%)']
     option=st.sidebar.selectbox('Which model would you like to use?',activities)
     st.subheader(option)
+    
     sex=["Male", "Female"]
     gender=sex.index(st.selectbox('Select Gender', sex))
     age=st.slider('Select Age', 18.0, 70.0)
@@ -44,13 +45,11 @@ def main():
     
     if st.button('Classify'):
         if option=='K - Nearest Neighbour (Accuracy = 97.5%)':
-            st.success(classify(knn_model.predict(inputs)))
-        elif option=='Support Vector Classifier (Accuracy = 38.8%)':
-            st.success(classify(svm_model.predict(inputs)))
+            st.success(classify(knn.predict(inputs)))
         elif option=='Decision Tree (Accuracy = 95.0%)':
-            st.success(classify(tree_model.predict(inputs)))
+            st.success(classify(tree.predict(inputs)))
         elif option=='Random Forest (Accuracy = 96.3%)':
-            st.success(classify(rf_model.predict(inputs)))
+            st.success(classify(rf.predict(inputs)))
             
 
 if __name__=='__main__':

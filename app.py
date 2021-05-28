@@ -31,7 +31,7 @@ def main():
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
-    activities=['K - Nearest Neighbour (Accuracy = 97.5%)','Decision Tree (Accuracy = 95.0%)', 'Random Forest (Accuracy = 96.3%)']
+    activities=['K - Nearest Neighbour (Accuracy = 97.5%)','Decision Tree (Accuracy = 92.5%)', 'Random Forest (Accuracy = 95.0%)']
     option=st.sidebar.selectbox('Which model would you like to use?',activities)
     st.subheader(option)
     

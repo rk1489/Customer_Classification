@@ -46,9 +46,9 @@ def main():
     if st.button('Classify'):
         if option=='K - Nearest Neighbour (Accuracy = 97.5%)':
             st.success(classify(knn.predict(inputs)))
-        elif option=='Decision Tree (Accuracy = 95.0%)':
+        elif option=='Decision Tree (Accuracy = 92.5%)':
             st.success(classify(tree.predict(inputs)))
-        elif option=='Random Forest (Accuracy = 96.3%)':
+        elif option=='Random Forest (Accuracy = 95.0%)':
             st.success(classify(rf.predict(inputs)))
             
 
